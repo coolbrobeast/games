@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game Launcher</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #09001a;
+    color: white;
+    font-family: Comic Sans MS, Caveat, cursive;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px;
+  }
+
+  button {
+    background: #00ffd5;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 14px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #00c7aa;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>GAME LAUNCHER</h1>
+
+<div class="grid">
+  <button onclick="launch(game1)">Game One</button>
+  <button onclick="launch(game2)">Game Two</button>
+  <button onclick="launch(game3)">Game Three</button>
+</div>
+
+<script>
+/* 🔁 GAME EMBEDS (PUT YOUR HTML HERE) */
+
+const game1 = `
+<iframe src="GAME_1_IFRAME_SRC"
+style="border:none;width:100vw;height:100vh;"></iframe>
+`;
+
+const game2 = `
+<iframe src="GAME_2_IFRAME_SRC"
+style="border:none;width:100vw;height:100vh;"></iframe>
+`;
+
+const game3 = `
+<iframe src="GAME_3_IFRAME_SRC"
+style="border:none;width:100vw;height:100vh;"></iframe>
+`;
+
+/* 🚀 LAUNCH FUNCTION */
+function launch(gameHTML) {
+  const win = window.open("about:blank", "_blank");
+  win.document.open();
+  win.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Game</title>
+      <style>
+        body { margin:0; background:black; }
+      </style>
+    </head>
+    <body>
+      ${gameHTML}
+    </body>
+    </html>
+  `);
+  win.document.close();
+}
+</script>
+
+</body>
+</html>
